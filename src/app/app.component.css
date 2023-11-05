@@ -1,0 +1,21 @@
+#container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#container p {
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.144);
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  gap: 20px;
+}
+
+#container span * {
+  margin: 0 15px;
+}

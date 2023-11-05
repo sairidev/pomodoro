@@ -1,0 +1,16 @@
+<div id="container">
+  <p *ngIf="minutes === 25; else breakTime">
+    <span>{{ counter }}</span>
+    <span>/</span>
+    <span>4</span>
+  </p>
+  <ng-template #breakTime>
+    <h2>Break</h2>
+  </ng-template>
+
+  <timer-component [pomodoro]="currentTime"></timer-component>
+  <span>
+    <button-component name="pause" (buttonClicked)="pause()"></button-component>
+    <button-component name="start" (buttonClicked)="start()"></button-component>
+  </span>
+</div>
