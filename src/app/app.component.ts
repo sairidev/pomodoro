@@ -13,8 +13,12 @@ export class AppComponent implements DoCheck {
   interval: any;
   currentTime: string | any;
   counter: number;
+  intro: boolean;
+  running: boolean;
 
   constructor() {
+    this.intro = true;
+    this.running = false;
     this.currentTime = '00:00:00';
     this.counter = 1;
     // pomodoro = 25 mins; short break = 5 mins;
@@ -23,6 +27,8 @@ export class AppComponent implements DoCheck {
     //time reseted to Jan 01 1970 00:00:00 in milliseconds
     this.zero = new Date(0).getTime() + 5 * 60 * 60 * 1000; // 00:00:00
     this.pomodoro = this.zero + this.minutes * 60 * 1000; // 00:25:00
+
+    this.introComponent();
   }
 
   ngDoCheck(): void {
@@ -46,15 +52,26 @@ export class AppComponent implements DoCheck {
   }
 
   start() {
+    this.running = true;
     const mySound = new Audio('../assets/sound.mp3');
     mySound.play();
     this.interval = setInterval(() => {
       this.pomodoro -= 1000;
-      mySound.muted;
     }, 1000);
   }
 
   pause() {
+    this.running = false;
     clearInterval(this.interval);
+  }
+
+  introComponent() {
+    this.interval = setTimeout(() => {
+      this.intro = false;
+    }, 3000);
+
+    if (this.intro === false) {
+      clearTimeout(this.interval);
+    }
   }
 }

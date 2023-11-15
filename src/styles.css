@@ -10,7 +10,11 @@
 }
 
 body {
+  height: 100vh;
   background-color: #242c3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button,

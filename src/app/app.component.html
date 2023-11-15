@@ -1,3 +1,4 @@
+<animation-component *ngIf="intro"></animation-component>
 <div id="container">
   <p *ngIf="minutes === 25; else breakTime">
     <span>{{ counter }}</span>
@@ -9,8 +10,11 @@
   </ng-template>
 
   <timer-component [pomodoro]="currentTime"></timer-component>
-  <span>
+  <span *ngIf="running; else start_btn">
     <button-component name="pause" (buttonClicked)="pause()"></button-component>
-    <button-component name="start" (buttonClicked)="start()"></button-component>
   </span>
+
+  <ng-template #start_btn>
+    <button-component name="start" (buttonClicked)="start()"></button-component>
+  </ng-template>
 </div>
